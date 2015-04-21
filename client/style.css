@@ -1,0 +1,74 @@
+#logo{
+    width: 125px;
+    height: 92px;
+    display: inline-block;
+    margin: 3px auto 3px 15px;
+}
+.navlink{
+    display: inline-block;
+    font-size: 20px;
+    float: right;
+    height: 20px;
+    margin: 39px auto auto 10px;
+}
+nav{
+    background-color: #5555ee;
+    margin: 0;
+}
+a{
+    color: white;
+}
+#loginForm, #signupForm{
+    width: 300px;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-right: auto; 
+}
+form{
+    background-color: #2222aa;
+    overflow: auto;
+}
+form *{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+form input{
+    margin-bottom: 12px;
+}
+form label{
+    color: white;
+}
+#loginSubmit, #signupSubmit{
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+#characters{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.char:nth-child(odd){
+    background-color: #5555ee;
+}
+.char:nth-child(even){
+    background-color: #2222aa;
+    color: white;
+}
+
+.char{
+    padding-left: 25px;
+    padding-top: 20px;
+}
+.charName{
+    margin-top: 0;
+}
+.charAge, .charHP{
+    display: inline-block;
+    margin: 0 15px 0 0;
+}
+.charDesc{
+    margin-bottom: 0;
+    padding-bottom: 16px;
+}

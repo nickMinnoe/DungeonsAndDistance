@@ -1,0 +1,39 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+    nav
+        a(href="/login")
+            img#logo(src="assets/image/favicon.png", alt="face logo")
+        .navlink
+            a(href="/logout") Log out
+    section#makeChar
+        form#charForm(class="charForm", name="charForm", action="/creater", method="POST")
+            label(for="name") Name:
+            input#charName(type="text", name="name", placeholder="Character Name")
+            
+            label(for="age") Age:
+            input#charAge(type="text", name="age", placeholder="Character Age")
+            
+            label(for="HP") HP:
+            input#charHP(type="text", name="HP", placeholder="Character HP")
+            
+            label(for="desc") Description:
+            input#charDesc(type="text", name="desc", placeholder="Character Description")
+            
+            a#makeCharSubmit(class="makeCharSubmit", href="#") Make Character
+        section#characters
+            if !chars || chars.length == 0
+                div.char
+                    h3.noChar No Character Made Yet
+            else
+                each person in chars
+                    div.char
+                        h3.charName Name: #{person.name}
+                        h4.charAge Age: #{person.age}
+                        h4.charHP HP: #{person.hp}
+                        p.charDesc Description: #{person.description}
+            
+block scripts
+    script(src="/assets/creation.js")
+                
