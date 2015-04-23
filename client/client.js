@@ -4,7 +4,8 @@ $(document).ready(function() {
 
     function handleError(message) {
         //add errorHandling
-        console.log("error", message);
+        console.log(message);
+        $('#error').text(message);
     }
     
     function sendAjax(action, data) {
