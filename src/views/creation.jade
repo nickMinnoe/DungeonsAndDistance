@@ -7,6 +7,8 @@ block body
             img#logo(src="assets/image/favicon.png", alt="face logo")
         .navlink
             a(href="/logout") Log out
+    div#errorCont
+      div#error
     section#makeChar
         form#charForm(class="charForm", name="charForm", action="/creater", method="POST")
             label(for="name") Name:

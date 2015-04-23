@@ -18,6 +18,11 @@ nav{
 a{
     color: white;
 }
+#error{
+    color: #f00;
+    width: 300px;
+    margin: 10px auto 5px auto;
+}
 #loginForm, #signupForm{
     width: 300px;
     margin-left: auto;
