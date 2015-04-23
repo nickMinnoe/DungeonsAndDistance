@@ -6,10 +6,9 @@ var requiresLogin = function(req, res, next){
 };
 
 var requiresLogout = function(req, res, next){
-    if(req.session){
     if(req.session.account){
         return res.redirect('/creater');
-    }}
+    }
     next();
 };
 
