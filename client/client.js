@@ -21,11 +21,11 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 var messageObj = JSON.parse(xhr.responseText);
             
-                handleError(messageObj.error);
+                handleError("poop",messageObj.error);
             }
         });        
     }
-    
+    /*
     $("#signupSubmit").on("click", function(e) {
         e.preventDefault();
     
@@ -43,16 +43,16 @@ $(document).ready(function() {
         
         return false;
     });
-
+*/
     $("#loginSubmit").on("click", function(e) {
         e.preventDefault();
     
-    
+    /*
         if($("#user").val() == '' || $("#pass").val() == '') {
             handleError("Username or password is empty");
             return false;
         }
-    
+    */
         sendAjax($("#loginForm").attr("action"), $("#loginForm").serialize());
 
         return false;
