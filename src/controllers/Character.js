@@ -9,7 +9,7 @@ var creationPage = function(req, res){
             console.log(err);
             return res.status(400).json({error:'An error occurred'});
         }
-        console.log(docs);
+        console.log("DOCS",docs);
         res.render('creation', {chars: docs});
     });
 };
@@ -22,7 +22,18 @@ var createChar = function(req, res){
     var charData = {
         name: req.body.name,
         age: req.body.age,
+        level: req.body.level,
         hp: req.body.HP,
+        ac: req.body.AC,
+        abilityScores: [
+            req.body.str,
+            req.body.dex,
+            req.body.con,
+            req.body.intel,
+            req.body.wis,
+            req.body.cha
+        ],
+        inventory: req.body.inventory,
         description: req.body.desc,
         owner: req.session.account._id
     };

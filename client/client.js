@@ -25,7 +25,7 @@ $(document).ready(function() {
             }
         });        
     }
-    /*
+    
     $("#signupSubmit").on("click", function(e) {
         e.preventDefault();
     
@@ -43,16 +43,16 @@ $(document).ready(function() {
         
         return false;
     });
-*/
+
     $("#loginSubmit").on("click", function(e) {
         e.preventDefault();
     
-    /*
+    
         if($("#user").val() == '' || $("#pass").val() == '') {
             handleError("Username or password is empty");
             return false;
         }
-    */
+    
         sendAjax($("#loginForm").attr("action"), $("#loginForm").serialize());
 
         return false;

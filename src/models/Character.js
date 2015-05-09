@@ -19,10 +19,29 @@ var CharSchema = new mongoose.Schema({
         min: 0,
         required: true
     },
+    level: {
+        type: Number,
+        min: 1,
+        required: true
+    },
     hp: {
         type: Number,
         min: 0,
         required: true
+    },
+    ac: {
+        type: Number,
+        min: 10,
+        required: true
+    },
+    abilityScores: {
+        type: Array,
+        required: true
+    },
+    inventory: {
+        type: String,
+        required: false,
+        trim: false
     },
     description: {
         type: String,
@@ -41,7 +60,11 @@ CharSchema.methods.toAPI = function(){
     return {
         name: this.name,
         age: this.age,
+        level: this.level,
         hp: this.hp,
+        ac: this.ac,
+        scores: this.abilityScores,
+        inventory: this.inventory,
         desc: this.description
     };
 };
@@ -51,7 +74,7 @@ CharSchema.statics.findByOwner = function(ownerId, callback){
         owner: mongoose.Types.ObjectId(ownerId)
     };
     
-    return CharModel.find(search).select("name age hp description").exec(callback);
+    return CharModel.find(search).select("name age level hp ac abilityScores inventory description").exec(callback);
 };
 
 CharModel = mongoose.model('Character', CharSchema);

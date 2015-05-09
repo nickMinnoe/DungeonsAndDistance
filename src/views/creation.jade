@@ -16,11 +16,33 @@ block body
             label(for="age") Age:
             input#charAge(type="text", name="age", placeholder="Character Age")
             
+            label(for="level") Level:
+            input#charHP(type="text", name="level", placeholder="Character Level")
+            
             label(for="HP") HP:
             input#charHP(type="text", name="HP", placeholder="Character HP")
             
+            label(for="AC") AC:
+            input#charHP(type="text", maxlength="2", name="AC", placeholder="Character AC")
+            
+            label(for="str") Strength:
+            input.charAS(type="text", maxlength="2", name="str")
+            label(for="dex") Dexterity:
+            input.charAS(type="text", maxlength="2", name="dex")
+            label(for="con") Constitution:
+            input.charAS(type="text", maxlength="2", name="con")
+            label(for="intel") Intelligence:
+            input.charAS(type="text", maxlength="2", name="intel")
+            label(for="wis") Wisdom:
+            input.charAS(type="text", maxlength="2", name="wis")
+            label(for="cha") Charisma:
+            input.charAS(type="text", maxlength="2", name="cha")
+            
+            label(for="inventory") Inventory:
+            textarea#charDesc(name="inventory", placeholder="Inventory")
+            
             label(for="desc") Description:
-            input#charDesc(type="text", name="desc", placeholder="Character Description")
+            textarea#charDesc(name="desc", placeholder="Character Description")
             
             a#makeCharSubmit(class="makeCharSubmit", href="#") Make Character
         section#characters
@@ -30,9 +52,14 @@ block body
             else
                 each person in chars
                     div.char
-                        h3.charName Name: #{person.name}
+                        h4.charLevel Level: #{person.level}
+                        h3.charName #{person.name}
                         h4.charAge Age: #{person.age}
                         h4.charHP HP: #{person.hp}
+                        h4.charAC AC: #{person.ac}
+                        each score in person.abilityScores
+                            h4.charScore= score
+                        p.CharInv Inventory: #{person.inventory}
                         p.charDesc Description: #{person.description}
             
 block scripts
