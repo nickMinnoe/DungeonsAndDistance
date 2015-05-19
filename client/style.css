@@ -72,6 +72,8 @@ a{
 #game{
     width: 400px;
     border-radius: 2px;
+    float: left;
+    clear: left;
 }
 
 #characters{
