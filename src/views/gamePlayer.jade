@@ -1,0 +1,25 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+    nav
+        a(href="/login")
+            img#logo(src="assets/image/favicon.png", alt="face logo")
+        .navlink
+            a(href="/logout") Log out
+        .navlink
+            a(href="/creater") Characters
+    div#error
+    select#charSelect(onchange="selectedChar()")
+        option()
+    br
+    div.containTheseFools
+        canvas#canvas(width="500", height="300")
+        div#charInfo
+block scripts
+    script var chars=!{JSON.stringify(chars)}
+    script var user=!{JSON.stringify(user)}
+    script(src="http://localhost:3000/socket.io/socket.io.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/assets/creation.js")
+    script(src="/assets/gamePlayer.js")

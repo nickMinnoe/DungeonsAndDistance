@@ -15,7 +15,7 @@ var creationPage = function(req, res){
 };
 
 var createChar = function(req, res){
-    if(!req.body.name || !req.body.age){
+    if(!req.body.name || !req.body.age || !req.body.level || !req.body.HP || !req.body.AC || !req.body.str || !req.body.dex || !req.body.con || !req.body.intel || !req.body.wis || !req.body.cha  || !req.body.inventory || !req.body.desc){
         return res.status(400).json({error: "All fields are required"});
     }
     

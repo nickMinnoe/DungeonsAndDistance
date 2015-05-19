@@ -1,0 +1,72 @@
+extends ./base.jade
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+    nav
+        a(href="/login")
+            img#logo(src="assets/image/favicon.png", alt="face logo")
+        .navlink
+            a(href="/logout") Log out
+        .navlink
+            a(href="/creater") Characters
+    div#error
+    div.containTheseFools
+        section#makeMon
+            form#monForm(class="monForm", name="monForm", action="/makeMon", method="POST")
+                label(for="name") Name:
+                input#monName(type="text", name="name", placeholder="Monster Name")
+                
+                label(for="HP") HP:
+                input#monHP(type="text", name="HP", placeholder="Monster HP")
+                
+                label(for="AC") AC:
+                input#monAC(type="text", maxlength="2", name="AC", placeholder="Monster AC")
+                
+                label(for="str") Strength:
+                input.monAS(type="text", maxlength="2", name="str")
+                label(for="dex") Dexterity:
+                input.monAS(type="text", maxlength="2", name="dex")
+                label(for="con") Constitution:
+                input.monAS(type="text", maxlength="2", name="con")
+                label(for="intel") Intelligence:
+                input.monAS(type="text", maxlength="2", name="intel")
+                br
+                label(for="wis") Wisdom:
+                input.monAS(type="text", maxlength="2", name="wis")
+                label(for="cha") Charisma:
+                input.monAS(type="text", maxlength="2", name="cha")
+                
+                input(type="hidden", name="game", value="#{game._id}")
+                
+                a#makeMonSubmit(class="makeMonSubmit", href="#") Make Monster
+                
+        canvas#canvas(width="600", height="400")
+        section#Monsters
+            if !mons || mons.length == 0
+                div.mon
+                    h3.noMon No Monsters Made Yet
+            else
+            div.mons
+                each mon in mons
+                    div.char
+                        button.addMon(onclick="summon('#{mon.name}')") Add #{mon.name}
+                        h3.monName #{mon.name}
+                        h4.monHP HP: #{mon.hp}
+                        h4.monAC AC: #{mon.ac}
+                        h4.charScore Str
+                        h4.charScore Dex
+                        h4.charScore Con
+                        h4.charScore Int
+                        h4.charScore Wis
+                        h4.charScore Cha
+                        br
+                        each score in mon.abilityscores
+                            h4.charScore= score
+block scripts
+    script var user=!{JSON.stringify(user)}
+    script var mons=!{JSON.stringify(mons)}
+    script(src="http://localhost:3000/socket.io/socket.io.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/assets/gameDM.js")
+    script(src="/assets/creation.js")
+                

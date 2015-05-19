@@ -7,7 +7,7 @@ block body
       img#logo(src="/assets/image/favicon.png", alt="face logo")
     .navlink
       a(href="/login") Login
-      br
+    .navlink
       a(href="/signup") Signup
   div#error
   section#login
@@ -16,6 +16,7 @@ block body
       input#user(type="text", name="username", placeholder="username")
       label(for="pass") Password: 
       input#pass(type="password", name="pass", placeholder="password")
+      input(type="hidden", name="_csrf", value="#{csrfToken}") 
       a#loginSubmit(class="formSubmit", href="#") Login
   
 block scripts

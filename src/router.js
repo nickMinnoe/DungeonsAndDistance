@@ -11,6 +11,9 @@ var router = function(app){
     app.get("/creater", mid.requiresLogin, controllers.Character.creationPage);
     app.post("/creater", mid.requiresLogin, controllers.Character.create);
     app.get("/", mid.requiresSecure, controllers.Account.loginPage);
+    app.get("/game", mid.requiresLogin, controllers.Game.gamePage);
+    app.post("/game", mid.requiresLogin, controllers.Game.create);
+    app.post("/makeMon", mid.requiresLogin, controllers.Monster.create);
 };
 
 module.exports = router;

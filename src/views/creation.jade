@@ -7,44 +7,44 @@ block body
             img#logo(src="assets/image/favicon.png", alt="face logo")
         .navlink
             a(href="/logout") Log out
+        .navlink
+            a(href="/game") Game
     div#error
-    section#makeChar
-        form#charForm(class="charForm", name="charForm", action="/creater", method="POST")
-            label(for="name") Name:
-            input#charName(type="text", name="name", placeholder="Character Name")
-            
-            label(for="age") Age:
-            input#charAge(type="text", name="age", placeholder="Character Age")
-            
-            label(for="level") Level:
-            input#charHP(type="text", name="level", placeholder="Character Level")
-            
-            label(for="HP") HP:
-            input#charHP(type="text", name="HP", placeholder="Character HP")
-            
-            label(for="AC") AC:
-            input#charHP(type="text", maxlength="2", name="AC", placeholder="Character AC")
-            
-            label(for="str") Strength:
-            input.charAS(type="text", maxlength="2", name="str")
-            label(for="dex") Dexterity:
-            input.charAS(type="text", maxlength="2", name="dex")
-            label(for="con") Constitution:
-            input.charAS(type="text", maxlength="2", name="con")
-            label(for="intel") Intelligence:
-            input.charAS(type="text", maxlength="2", name="intel")
-            label(for="wis") Wisdom:
-            input.charAS(type="text", maxlength="2", name="wis")
-            label(for="cha") Charisma:
-            input.charAS(type="text", maxlength="2", name="cha")
-            
-            label(for="inventory") Inventory:
-            textarea#charDesc(name="inventory", placeholder="Inventory")
-            
-            label(for="desc") Description:
-            textarea#charDesc(name="desc", placeholder="Character Description")
-            
-            a#makeCharSubmit(class="makeCharSubmit", href="#") Make Character
+    div.containTheseFools
+        section#makeChar
+            form#charForm(class="charForm", name="charForm", action="/creater", method="POST")
+                input#charName(type="text", name="name", placeholder="Name", size="20")
+                
+                input#charAge(type="text", name="age", placeholder="Age", size="4")
+                
+                input#charHP(type="text", name="level", placeholder="Level", size="3")
+                br
+                input#charHP(type="text", name="HP", placeholder="HP", size="5")
+                
+                input#charHP(type="text", maxlength="2", name="AC", placeholder="AC", size="3")
+                br
+                label(for="str") Strength:
+                input.charAS(type="text", maxlength="2", name="str", size="3")
+                label(for="dex") Dexterity:
+                input.charAS(type="text", maxlength="2", name="dex", size="3")
+                br
+                label(for="con") Constitution:
+                input.charAS(type="text", maxlength="2", name="con", size="3")
+                label(for="intel") Intelligence:
+                input.charAS(type="text", maxlength="2", name="intel", size="3")
+                br
+                label(for="wis") Wisdom:
+                input.charAS(type="text", maxlength="2", name="wis", size="3")
+                label(for="cha") Charisma:
+                input.charAS(type="text", maxlength="2", name="cha", size="3")
+                br
+                label(for="inventory") Inventory:
+                textarea#charDesc(name="inventory", placeholder="Inventory")
+                br0
+                label(for="desc") Description:
+                textarea#charDesc(name="desc", placeholder="Character Description")
+                
+                a#makeCharSubmit(class="makeCharSubmit", href="#") Make Character
         section#characters
             if !chars || chars.length == 0
                 div.char
@@ -57,11 +57,22 @@ block body
                         h4.charAge Age: #{person.age}
                         h4.charHP HP: #{person.hp}
                         h4.charAC AC: #{person.ac}
+                        h4.charScore Str
+                        h4.charScore Dex
+                        h4.charScore Con
+                        h4.charScore Int
+                        h4.charScore Wis
+                        h4.charScore Cha
+                        br
                         each score in person.abilityScores
                             h4.charScore= score
                         p.CharInv Inventory: #{person.inventory}
                         p.charDesc Description: #{person.description}
-            
+    section#game
+        form#gameForm(class="gameForm", name="gameForm", action="/game", method="POST")
+            label(for="name") Name:
+            input#gameName(type="text", name="name", placeholder="Game Name")
+            a#makeGameSubmit(class="makeGameSubmit", href="#") Make Game
 block scripts
     script(src="/assets/creation.js")
                 

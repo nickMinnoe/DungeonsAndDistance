@@ -10,6 +10,8 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var url = require('url');
+var socketio = require('socket.io');
+var csrf = require('csurf');
 
 var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/CharacterMaker";
 
@@ -60,6 +62,12 @@ app.set('views', __dirname + '/views');
 app.use(favicon(__dirname + '/../client/image/favicon.png'));
 app.use(cookieParser());
 
+app.use(csrf());
+app.use(function (err, req, res, next) {
+    if (err.code !== 'EBADCSRFTOKEN') return next(err)
+  return;
+});
+
 router(app);
 
 server = app.listen(port, function(err){
@@ -67,4 +75,44 @@ server = app.listen(port, function(err){
         throw err;
     }
     console.log('Listening on port '+port);
+});
+
+var io = socketio.listen(server);
+var users = {};
+
+var onJoined = function(socket) {
+
+	socket.on("join", function(data) {
+        socket.name = data.user;
+        users[socket.name] = socket.name;
+		socket.join('room1');
+        
+	});
+};
+
+var onQue = function(socket){
+    socket.on('queue', function(data){
+        //drawQue[data.time] = {user:data.user, coords:data.coords};
+        io.sockets.in('room1').emit('draw', data);
+    });
+};
+
+var onDisconnect = function(socket) {
+
+	socket.on("disconnect", function(data) {
+
+		socket.leave('room1');
+        delete users[socket.name];
+        io.sockets.in('room1').emit('remove', {user: socket.name});
+	});
+};
+
+console.log('starting up sockets');
+
+io.sockets.on("connection", function(socket) {
+
+    onJoined(socket);
+    onQue(socket); 
+    onDisconnect(socket);
+	
 });
