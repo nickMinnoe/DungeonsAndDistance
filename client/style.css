@@ -20,6 +20,12 @@ body{
     height: 20px;
     margin: 24px -14px auto 10px;
 }
+#charInfo{
+    width: 300px;
+    float: right;
+    display: none;
+    color: white;
+}
 .navlink a{
     margin-right:20px;
     text-decoration:none;
