@@ -15,7 +15,7 @@ block body
             form#monForm(class="monForm", name="monForm", action="/makeMon", method="POST")
                 label(for="name") Name:
                 input#monName(type="text", name="name", placeholder="Monster Name")
-                
+                input(type="hidden", name="_csrf", value="#{csrfToken}")
                 label(for="HP") HP:
                 input#monHP(type="text", name="HP", placeholder="Monster HP")
                 
@@ -39,7 +39,9 @@ block body
                 input(type="hidden", name="game", value="#{game._id}")
                 
                 a#makeMonSubmit(class="makeMonSubmit", href="#") Make Monster
-                
+        div#updateMon
+            input#monNum(type="text")        
+            button(onclick="updateNum()") Update!
         canvas#canvas(width="600", height="400")
         section#Monsters
             if !mons || mons.length == 0

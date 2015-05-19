@@ -1,3 +1,4 @@
+//You've seen this before.
 var mongoose = require('mongoose');
 var _ = require('underscore');
 

@@ -1,3 +1,5 @@
+//Really simple, gives the monsters a place to live, and the people a place
+//to play.
 var mongoose = require('mongoose');
 
 var GameModel;

@@ -20,7 +20,7 @@ block body
                 input#charHP(type="text", name="level", placeholder="Level", size="3")
                 br
                 input#charHP(type="text", name="HP", placeholder="HP", size="5")
-                
+                input(type="hidden", name="_csrf", value="#{csrfToken}")
                 input#charHP(type="text", maxlength="2", name="AC", placeholder="AC", size="3")
                 br
                 label(for="str") Strength:

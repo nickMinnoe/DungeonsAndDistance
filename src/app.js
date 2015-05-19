@@ -1,5 +1,10 @@
 //depends on files/folders: client, favicon, views
 
+//This project broke in ways I didn't expect (see client/gameDM.js) and
+//that really hindered my progress as well as my resolve. Please enjoy
+//the musical wonder that is my current mood as a result.
+//https://www.youtube.com/watch?v=XRvpGGc9Jv8
+
 var path = require('path');
 var express = require('express');
 var compression = require('compression');
@@ -116,3 +121,4 @@ io.sockets.on("connection", function(socket) {
     onDisconnect(socket);
 	
 });
+

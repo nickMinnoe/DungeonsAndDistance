@@ -2,7 +2,7 @@ var _ = require('underscore');
 var models = require('../models');
 
 var Char = models.Character;
-
+//The basic creation page, based on Domo Maker
 var creationPage = function(req, res){
     Char.CharModel.findByOwner(req.session.account._id, function(err, docs){
         if(err){
@@ -10,10 +10,10 @@ var creationPage = function(req, res){
             return res.status(400).json({error:'An error occurred'});
         }
         console.log("DOCS",docs);
-        res.render('creation', {chars: docs});
+        res.render('creation', {chars: docs, csrfToken: req.csrfToken()});
     });
 };
-
+//Creation function, actually make your domo.
 var createChar = function(req, res){
     if(!req.body.name || !req.body.age || !req.body.level || !req.body.HP || !req.body.AC || !req.body.str || !req.body.dex || !req.body.con || !req.body.intel || !req.body.wis || !req.body.cha  || !req.body.inventory || !req.body.desc){
         return res.status(400).json({error: "All fields are required"});

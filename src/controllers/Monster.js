@@ -1,7 +1,9 @@
 var models = require('../models');
 
 var Mon = models.Monster;
-
+//Don't require the ability scores, this way I can allow for some to be
+//blank, not all are important to everyone.
+//Was having an issue with default overwriting given data.
 var createMon = function(req, res){
     if(!req.body.name || !req.body.HP || !req.body.AC){
         return res.status(400).json({error: "Name, HP and AC fields are required"});

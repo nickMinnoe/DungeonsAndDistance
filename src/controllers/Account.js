@@ -1,3 +1,7 @@
+//You've seen this all before. I did get the OAuth working, thought about
+//using it here just to change things up but this works better.
+//OAuth is here: https://github.com/nickMinnoe/myFirstOAuth
+
 var models = require('../models');
 
 var Account = models.Account;
