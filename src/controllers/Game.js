@@ -12,12 +12,12 @@ var gamePage = function(req, res){
             return res.status(400).json({error:'An error occurred'});
         }
         //Send back a different template if it's the DM
-        if(req.session.account._id == game[0].dm){
-            Mon.MonsterModel.findByGame(game[0]._id, function(err, monsters){
+        if(req.session.account._id == game.dm){
+            Mon.MonsterModel.findByGame(game._id, function(err, monsters){
                 if(err){
                     return res.status(400).json({error:"Error finding monsters!"});
                 }
-                res.render('game', {user: req.session.account._id, mons: monsters, csrfToken: req.csrfToken(), game: game[0]});
+                res.render('game', {user: req.session.account._id, mons: monsters, csrfToken: req.csrfToken(), game: game});
             });
         } else{
         //Handle this for the characters
