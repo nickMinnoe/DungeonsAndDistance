@@ -72,6 +72,7 @@ block body
             form#gameForm(class="gameForm", name="gameForm", action="/game", method="POST")
                 label(for="name") Name:
                 input#gameName(type="text", name="name", placeholder="Game Name")
+                input(type="hidden", name="_csrf", value="#{csrfToken}")
                 a#makeGameSubmit(class="makeGameSubmit", href="#") Make Game
 block scripts
     script(src="/assets/creation.js")
