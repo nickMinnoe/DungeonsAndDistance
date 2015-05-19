@@ -39,4 +39,30 @@ $(document).ready(function() {
         return false;
     });
     
+    $("#makeGameSubmit").on("click", function(e) {
+        e.preventDefault();
+    
+        if($("#gameName").val() == '') {
+            handleError("Name is required");
+            return false;
+        }
+
+        sendAjax($("#gameForm").attr("action"), $("#gameForm").serialize());
+        
+        return false;
+    });
+    
+    $("#makeMonSubmit").on("click", function(e) {
+        e.preventDefault();
+    
+        if($("#monName").val() == '' || $("#monAC").val() == '' || $("#monHP").val() == '') {
+            handleError("Name, HP and AC are required");
+            return false;
+        }
+
+        sendAjax($("#monForm").attr("action"), $("#monForm").serialize());
+        
+        return false;
+    });
+    
 });

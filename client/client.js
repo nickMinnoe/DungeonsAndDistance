@@ -1,5 +1,5 @@
 "use strict";
-
+//I bet this looks familiar.
 $(document).ready(function() {
 
     function handleError(message) {
@@ -21,7 +21,7 @@ $(document).ready(function() {
             error: function(xhr, status, error) {
                 var messageObj = JSON.parse(xhr.responseText);
             
-                handleError("poop",messageObj.error);
+                handleError("ERROR:",messageObj.error);
             }
         });        
     }
